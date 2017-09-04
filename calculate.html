@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<Title>shapes</Title>
+<link rel='stylesheet' type='text/css'>
+<style>
+body {
+	margin: 0px;
+	background-color: #F0F0F1;
+}
+
+.myShapes {
+	display: none;
+	float: left;
+	width: 100%;
+	text-align: center;
+	background-color: white;
+	margin-left: ;
+	margin-top: -530px;
+	max-width: 100%;
+	margin-bottom: 20px;
+	padding-bottom: 40px;
+}
+.myArea {
+	
+	width: 15%;
+	height: 100px;
+	margin-top: 100px;
+	text-align: center;
+	margin-left: 30px;
+	background-color: #F0F0F1;
+	font: 100 25px/1.2 'Merienda One', Helvetica, sans-serif;
+   
+}
+.myPerimeter {
+	
+	width: 15%;
+	height: 100px;
+	margin-top: 100px;
+	text-align: center;
+	margin-left: 30px;
+	background-color: #F0F0F1;
+	font: 100 25px/1.2 'Merienda One', Helvetica, sans-serif;
+   
+}
+.button {
+	font: 100 16px/1.2 'Merienda One', Helvetica, sans-serif;
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.image {
+	margin-bottom: 0px; 
+	height: 50%; 
+	width: 50%;
+}
+font {
+	font: 100 16px/1.2 'Merienda One', Helvetica, sans-serif;
+    color: rgba(0,0,0,0.7);
+    text-shadow: 3px 3px 3px #fff;
+}
+input[type=number] {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+}
+</style>
+</head>
+<body>
+
+	<form id="choice">
+		<input type="radio" name="background" value="circle" onclick="changeShape(0)">Circle<br>
+		<input type="radio" name="background" value="triangle" onclick="changeShape(1)">Triangle<br>
+		<input type="radio" name="background" value="square" onclick="changeShape(2)">Square<br><br>
+	
+	</form>
+
+<div class = "myArea" id = "Area"></div>
+
+<div class = "myPerimeter" id = "Perimeter"></div>
+
+<div class = "myShapes" id = "circle">
+	<img src = "circle.png" class = "image" >
+	<form >
+		<font>Enter the radius of the circle:</font>
+		<input type = "number" id = "radius" min = "0">
+		<br>
+		<br>
+		<button class = "button" onclick = "circleArea();circlePerimeter(); return false;">Calculate</button>
+	</form>
+</div>
+
+<div class = "myShapes" id = "triangle">
+	<img src = "triangle.png" class = "image" >
+	<form>
+		<font>Enter first side of the triangle:</font>
+		<input type = "number" id = "side1" min = "0">
+		<br>
+		<br>
+		<font>Enter second side of the triangle:</font>
+		<input type = "number" id = "side2" min = "0">
+		<br>
+		<br>
+		<font>Enter third side of the triangle:</font>
+		<input type = "number" id = "side3" min = "0">
+		<br>
+		<br>
+		<button class = "button" onclick = "triangleArea();trianglePerimeter(); return false;">Calculate</button>
+	</form>
+</div>
+
+<div class = "myShapes" id = "square">
+	<img src = "square.png" class = "image" >
+	<form>
+		<font>Enter the side of the square:</font>
+		<input type = "number" id = "side" min = "0">
+		<br>
+		<br>
+		<button class = "button" onclick = "squareArea();squarePerimeter(); return false;">Calculate</button>
+	</form>
+</div>
+
+
+<script type="text/javascript" > 
+ 
+function changeShape(index) {
+   var shapes = document.getElementsByClassName('myShapes');
+   for (var i = 0 ; i < shapes.length ; i++)
+   {
+		if(i === index)
+		{
+			shapes[index].style.display = 'block';
+		}
+		else
+		{
+			shapes[i].style.display = 'none';
+		}
+   }
+   var divArea = document.getElementById('Area');
+   var divPerimeter = document.getElementById('Perimeter');
+   divArea.innerHTML = "";
+   divPerimeter.innerHTML = "";
+}
+function circleArea() {
+	var divArea = document.getElementById('Area');
+	var radius = document.getElementById('radius').value;
+	if(+radius < 0)
+	{
+		alert("Enter a positive value!");
+	}
+	else
+	{
+	var area = (3.14*radius*radius).toFixed(2);
+	divArea.innerHTML = "";
+	divArea.innerHTML += "Area=<br>" + area + " sq. units";
+	}
+}
+function circlePerimeter() {
+	var radius = document.getElementById('radius').value;
+	if(+radius < 0)
+	{
+		alert("Enter a positive value!");
+	}
+	else
+	{
+	var perimeter = (3.14*radius*2).toFixed(2);
+	var divPerimeter = document.getElementById('Perimeter');
+	divPerimeter.innerHTML = "";
+	divPerimeter.innerHTML += "Circumference<br>" + perimeter + " units";
+	}
+}
+function triangleArea() {
+	var side1 = document.getElementById('side1').value;
+	var side2 = document.getElementById('side2').value;
+	var side3 = document.getElementById('side3').value;
+	if(+side1 < 0 || +side2 < 0 || +side3 < 0)
+	{
+		alert("Enter a positive value!");
+	}
+	else
+	{
+	var s = (+side1 + +side2 + +side3)/2;
+	var area = Math.sqrt(s*(+s - +side1)*(+s - +side2)*(+s - +side3)).toFixed(2);
+		if(+area === 0)
+		{
+			alert("Not a valid triangle");
+		}
+		else
+		{
+			var divArea = document.getElementById('Area');
+			divArea.innerHTML = "";
+			divArea.innerHTML += "Area<br>" + area + " sq. units";
+		}
+	}
+}
+function trianglePerimeter() {
+	var side1 = document.getElementById('side1').value;
+	var side2 = document.getElementById('side2').value;
+	var side3 = document.getElementById('side3').value;
+	if(+side1 < 0 || +side2 < 0 || +side3 < 0)
+	{
+		alert("Enter a positive value!");
+	}
+	else
+	{
+	var s = (+side1 + +side2 + +side3)/2;
+	var area = Math.sqrt(s*(+s - +side1)*(+s - +side2)*(+s - +side3)).toFixed(2);
+	if(+area === 0)
+		{
+			
+		}
+		else
+		{
+			var perimeter = (+side1 + +side2 + +side3);
+			var divPerimeter = document.getElementById('Perimeter');
+			divPerimeter.innerHTML = "";
+			divPerimeter.innerHTML += "Perimeter<br>" + perimeter + " units";
+		}
+	}
+}
+function squareArea() {
+	var side = document.getElementById('side').value;
+	if(+side < 0)
+	{
+		alert("Enter a positive value!");
+	}
+	else
+	{
+	var area = side*side;
+	var divArea = document.getElementById('Area');
+	divArea.innerHTML = "";
+	divArea.innerHTML += "Area<br>" + area + " sq. units";
+	}
+}
+function squarePerimeter() {
+	var side = document.getElementById('side').value;
+	if(+side < 0)
+	{
+		alert("Enter a positive value!");
+	}
+	else
+	{
+	var perimeter = 4*side;
+	var divPerimeter = document.getElementById('Perimeter');
+	divPerimeter.innerHTML = "";
+	divPerimeter.innerHTML += "Perimeter<br>" + perimeter + " units";
+	}
+}
+
+</script>
+
+</body>
+</html>
