@@ -1,0 +1,59 @@
+<HTML>
+	<head>
+	 <meta charset='UTF-8'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel='stylesheet'>
+<style>
+
+</style>
+<body >
+	<header style='text-align:center; font-size:20px' >
+		<h1>CSS properties</h1>
+		
+	</header>
+	<br><br>
+
+	<div>
+	<select id="menu" onclick="showdesc()">
+	  <option value="color">color</option>
+	  <option value="background">background</option>
+	  <option value="margins">margins</option>
+	  <option value="text">text and fonts</option>
+	  <option value="table">table</option>
+	  <option value="other properties">other properties</option>
+	</select>
+	</div>
+	<br><br>
+	<div id="description"></div>
+
+<script type="text/javascript" > 
+
+function showdesc(){
+	var option = document.getElementById('menu').selectedIndex
+	var desc = document.getElementById('description')
+	desc.innerHTML = ""
+	if(option===0){
+		desc.innerHTML += "color : set the color of text <br>opacity : set opacity level of an element"
+	}
+
+	if(option===1){
+		desc.innerHTML += "background : set background properties of an element <br>background-color : specifies background color of an element <br>background-image : specifies background image for an element <br>"
+	}
+	if(option===2){
+		desc.innerHTML += "margin : sets all the margin properties <br>margin-bottom : sets the bottom margin of an element <br>margin-left : sets the left margin of an element <br>margin-right : sets the right margin of an element <br>margin-top : sets the top margin of an element <br>max-height : sets the maximum height of an element <br>max-width : sets the maximum width of an element <br>min-height : Sets the minimum height of an element <br>min-width : sets the minimum width of an element <br>overflow : specifies what happens if content overflows an element's box <br>padding : sets all the padding properties <br>padding-bottom : sets the bottom padding of an element <br>padding-left : sets the left padding of an element <br>padding-right : sets the right padding of an element <br>padding-top : sets the top padding of an element <br>"
+	}
+	if(option===3){
+		desc.innerHTML += "text-align : horizontally aligns the text <br>word-wrap : allows long, unbreakable words to be broken and wrap to the next line <br>font : set all the font properties <br>font-family : specify font family for text <br>font-size : set the font size for text <br>font-style : set a font style for text <br>"
+	}
+	if(option===4){
+		desc.innerHTML += "border-collapse : specifies whether table berders collapse or not <br>border-spacing : specify space between borders of adjacent cells of table <br>table-layout : set the layout for table <br>column : to set column width and count"
+	}
+	if(option===5){
+		desc.innerHTML += "float : specifies whether or not an element should float <br>height : sets height of an element <br>left : sets an element to left position <br>top : sets top position of an element <br>visibility : specifies whether an element is visible or not <br>width : sets the width of an element <br>"
+	}
+
+}
+</script>
+
+</body>
+</head>
